@@ -87,10 +87,10 @@ app.delete('/api/datos/:id', (req, res) => {
 });
 //PATCH update por id
 app.patch('/api/datos/:id', jsonParser, async (req, res) => {
-	const { entrada, salida, cobro } = req.body;
+	const { placa, entrada, salida, cobro } = req.body;
 	try {
 		const todo = await Vehiculo.findByIdAndUpdate(req.params.id, {
-			$push: { entrada: entrada, salida: salida, cobro: cobro }
+			$push: { placa: placa, entrada: entrada, salida: salida, cobro: cobro }
 		}, { new: true });
 
 		if (!todo) {
